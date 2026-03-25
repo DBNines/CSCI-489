@@ -1,0 +1,32 @@
+#######STEP 1 
+Rows before cleaning: 36822                                                   
+Rows after cleaning: 32480 
+Rows removed: 4342 
+#######STEP 2 - NEW CSV MADE (Salaries_New.csv)
+#######STEP 3                                                                 
+Number of rows in random sample: 1500 
+#######STEP 4 
+Number of rows meeting criteria: 8510 
+#######STEP 5 
+Number of Indiana jobs found in sample: 661 
+indiana_bins
+  (15104.2,33870]     (33870,52450]     (52450,71030]     (71030,89610] 
+              271               247                84                35 
+   (89610,108190]   (108190,126770]   (126770,145350]   (145350,163930] 
+               11                 1                 3                 4 
+  (163930,182510] (182510,201275.8] 
+                2                 3 
+#######STEP 6 
+# A tibble: 6 × 2
+  ST     TOT_EMP
+  <chr>    <dbl>
+1 CA    15202530
+2 TX    10061750
+3 NY     8515960
+4 FL     7963010
+5 IL     5894670
+6 PA     5663070
+#######STEP 7 
+Calculated Indiana Average Yearly Salary: 42620.92 
+Comparison:  Average is 42620.92 vs provided 42630/36410
+#######STEP 8 - CHART MADE

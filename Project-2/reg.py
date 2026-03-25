@@ -53,3 +53,19 @@ print("\nConfusion Matrix:")
 print(confusion_matrix(y_test, binary_predictions))
 print("\nClassification Report:")
 print(classification_report(y_test, binary_predictions))
+
+# Get coefficients
+importances = model.coef_
+feature_names = X_train.columns
+
+# Create DF
+feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': importances})
+
+# Add a column for Absolute Importance for "impact" ranking
+feature_importance_df['Abs_Importance'] = feature_importance_df['Importance'].abs()
+
+# Sort by Absolute Importance to see the most influential features overall
+feature_importance_df = feature_importance_df.sort_values(by='Abs_Importance', ascending=False)
+
+print("\nTop 10 Most Influential Features (Overall):")
+print(feature_importance_df.head(10))

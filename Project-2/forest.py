@@ -60,3 +60,11 @@ feature_importance_df = feature_importance_df.sort_values(by='Importance', ascen
 # Print the top 10
 print("\nTop 10 Most Important Features:")
 print(feature_importance_df.head(10))
+
+#Precision, Recall, and F!
+precision = precision_score(y_test, predictions)
+print(f"Precision: {precision*100 :.2f}%")
+recall = recall_score(y_test, predictions)
+print(f"Recall: {recall*100 :.2f}%")
+f1 = f1_score(y_test, predictions)
+print(f"F1: {f1*100 :.2f}%")

@@ -36,6 +36,7 @@ X_test_scaled = scaler.transform(X_test)
 
 model = MLPClassifier(
     hidden_layer_sizes=(128, 64, 32), 
+    #hidden_layer_sizes=(256, 128, 64), 
     activation='relu', 
     solver='adam', 
     max_iter=500, 
@@ -61,3 +62,26 @@ print("\nConfusion Matrix:")
 print(confusion_matrix(y_test, binary_predictions))
 print("\nClassification Report:")
 print(classification_report(y_test, binary_predictions))
+
+#Precision, Recall, and F!
+precision = precision_score(y_test, binary_predictions)
+print(f"Precision: {precision*100 :.2f}%")
+recall = recall_score(y_test, binary_predictions)
+print(f"Recall: {recall*100 :.2f}%")
+f1 = f1_score(y_test, binary_predictions)
+print(f"F1: {f1*100 :.2f}%")
+
+from sklearn.inspection import permutation_importance
+
+# Calculate Permutation Importance
+# This takes a minute because it re-evaluates the model multiple times
+result = permutation_importance(model, X_test_scaled, y_test, n_repeats=5, random_state=9, n_jobs=-1)
+
+# Organize into a DataFrame
+feature_importance_df = pd.DataFrame({
+    'Feature': X_train.columns,
+    'Importance': result.importances_mean
+}).sort_values(by='Importance', ascending=False)
+
+print("\nTop 10 Most Important Features (DNN Permutation Importance):")
+print(feature_importance_df.head(10))
